@@ -1,17 +1,15 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "turniplabs.simpletech.mixin",
+  "package": "ambos.simpletech.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "EntityItemMixin",
     "EntityPlayerMixin",
     "EntityPlayerMPMixin"
   ],
   "client": [
     "EntityPlayerSPMixin",
-    "NetClientHandlerMixin",
-    "RenderBlocksMixin"
+    "NetClientHandlerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

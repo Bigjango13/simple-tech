@@ -1,4 +1,4 @@
-package turniplabs.simpletech;
+package ambos.simpletech;
 
 import net.minecraft.core.block.Block;
 import net.minecraft.core.data.DataLoader;
@@ -12,11 +12,17 @@ import turniplabs.halplibe.util.RecipeEntrypoint;
 
 public class SimpleTechRecipes implements RecipeEntrypoint {
     public static final RecipeNamespace SIMPLE_TECH = new RecipeNamespace();
-    public static final RecipeGroup<RecipeEntryCrafting<?, ?>> WORKBENCH = new RecipeGroup<>(new RecipeSymbol(new ItemStack(Block.workbench)));
+    public static final RecipeGroup<RecipeEntryCrafting<?, ?>> WORKBENCH = new RecipeGroup<>(
+            new RecipeSymbol(new ItemStack(Block.workbench)));
+
+    @Override
+    public void initNamespaces() {
+    }
+
     @Override
     public void onRecipesReady() {
         SIMPLE_TECH.register("workbench", WORKBENCH);
         Registries.RECIPES.register("simpletech", SIMPLE_TECH);
-        DataLoader.loadRecipes("/assets/simpletech/recipes/workbench.json");
+        DataLoader.loadRecipesFromFile("/assets/simpletech/recipes/workbench.json");
     }
 }

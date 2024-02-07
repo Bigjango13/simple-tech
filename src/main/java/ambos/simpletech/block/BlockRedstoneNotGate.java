@@ -1,4 +1,4 @@
-package turniplabs.simpletech.block;
+package ambos.simpletech.block;
 
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.entity.TileEntity;
@@ -10,9 +10,10 @@ import net.minecraft.core.util.helper.Direction;
 import net.minecraft.core.util.helper.Side;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.WorldSource;
-import turniplabs.simpletech.SimpleTech;
 
 import java.util.Random;
+
+import ambos.simpletech.SimpleTech;
 
 public class BlockRedstoneNotGate extends Block {
     private final boolean isPowered;
@@ -23,7 +24,7 @@ public class BlockRedstoneNotGate extends Block {
     }
 
     @Override
-    public void setBlockBoundsBasedOnState(World world, int x, int y, int z) {
+    public void setBlockBoundsBasedOnState(WorldSource world, int x, int y, int z) {
         // Sets block shape when placed.
         this.setBlockBounds(0.0f, 0.0f, 0.0f, 1.0f, 0.125f, 1.0f);
     }
@@ -50,8 +51,9 @@ public class BlockRedstoneNotGate extends Block {
     }
 
     @Override
-    public ItemStack[] getBreakResult(World world, EnumDropCause dropCause, int x, int y, int z, int meta, TileEntity tileEntity) {
-        return new ItemStack[]{new ItemStack(SimpleTech.notGate)};
+    public ItemStack[] getBreakResult(World world, EnumDropCause dropCause, int x, int y, int z, int meta,
+            TileEntity tileEntity) {
+        return new ItemStack[] { new ItemStack(SimpleTech.notGate) };
     }
 
     @Override
@@ -71,19 +73,9 @@ public class BlockRedstoneNotGate extends Block {
     }
 
     @Override
-    public int getBlockTextureFromSideAndMetadata(Side side, int j) {
-        if (side == Side.BOTTOM) {
-            return !this.isPowered ? texCoordToIndex(3, 7) : texCoordToIndex(3, 6);
-        } else if (side == Side.TOP) {
-            return !this.isPowered ? texCoordToIndex(3, 8) : texCoordToIndex(3, 9);
-        } else {
-            return texCoordToIndex(5, 0);
-        }
-    }
-
-    @Override
     public boolean shouldSideBeRendered(WorldSource blockAccess, int x, int y, int z, int side) {
-        // Don't render bottom and top textures to avoid z-fighting with modified renderer.
+        // Don't render bottom and top textures to avoid z-fighting with modified
+        // renderer.
         return side != Side.BOTTOM.getId() && side != Side.TOP.getId();
     }
 

@@ -1,13 +1,14 @@
-package turniplabs.simpletech.block.entity;
+package ambos.simpletech.block.entity;
 
 import net.minecraft.core.block.entity.TileEntity;
 import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.EntityItem;
 import net.minecraft.core.util.phys.AABB;
 import net.minecraft.core.world.World;
-import turniplabs.simpletech.SimpleTech;
 
 import java.util.List;
+
+import ambos.simpletech.SimpleTech;
 
 public class TileEntityFan extends TileEntity {
     private final int range;
@@ -48,8 +49,7 @@ public class TileEntityFan extends TileEntity {
             }
 
             List<Entity> entities = world.getEntitiesWithinAABB(Entity.class, AABB.getBoundingBoxFromPool(
-                    px, py, pz, px + 1, py + 1, pz + 1)
-            );
+                    px, py, pz, px + 1, py + 1, pz + 1));
 
             for (Entity entity : entities) {
                 if (entity instanceof EntityItem) {
